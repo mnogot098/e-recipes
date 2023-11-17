@@ -1,10 +1,7 @@
 import React from 'react';
-import "./Meal.scss";
-import { FaUtensilSpoon } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { BiChevronsRight } from "react-icons/bi";
 import { AiOutlineCheckSquare } from 'react-icons/ai';
+import { FaUtensilSpoon } from "react-icons/fa";
+import "./Meal.scss";
 
 const MealSingle = ({meal}) => {
   console.log(meal);
@@ -16,23 +13,7 @@ const MealSingle = ({meal}) => {
   return (
     <div className='section-wrapper'>
       <div className='container'>
-        <div className='breadcrumb bg-orange text-white'>
-          <ul className='flex align-center my-2'>
-            <li className='breadcrumb-item'>
-              <Link to = "/" className='flex align-center'>
-                <AiFillHome size = {22} />
-              </Link>
-            </li>
-            <li className='flex align-center mx-1'>
-              <BiChevronsRight size = {23} />
-            </li>
-            <li className='breadcrumb-item flex'>
-              <span to = "" className='fs-15 fw-5 text-uppercase'>{meal?.title}</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className='sc-title'>Meal Details</div>
+        <p className='details-title'>Meal Details</p>
         <section className='sc-details bg-white'>
           <div className='details-head grid'>
             <div className='details-img'>
@@ -46,24 +27,7 @@ const MealSingle = ({meal}) => {
                   <span className='text-uppercase fw-8 ls-1 my-1'>category: &nbsp;</span>
                   <span className='text-uppercase ls-2'>{ meal?.category }</span>
                 </div>
-
-                <div className='source flex align-center'>
-                  <span className='fw-7'>Source: &nbsp;</span>
-                  <a href = {meal.source}>
-                    {meal.source ? (meal?.source).substring(0, 40) + "..." : "Not found" }
-                  </a>
-                </div>
               </div>
-
-              <div className='tags flex align-start flex-wrap'>
-                <h6 className='fs-16'>Tags:</h6>
-                <ul className='flex align-center flex-wrap'>
-                  {
-                    tags?.map((tag, idx) => (<li key = {idx} className = "fs-14">{tag}</li>))
-                  }
-                </ul>
-              </div>
-
               <div className='ingredients my-5 px-3 py-3'>
                 <h6 className='fs-16 text-white'>Ingredients</h6>
                 <ul className='grid'>
@@ -71,7 +35,7 @@ const MealSingle = ({meal}) => {
                     meal?.ingredients?.map((ingredient, idx) => (
                       <li key = {idx} className = "flex align-center">
                         <span className='li-dot'>{idx + 1}</span>
-                        <span className='text-capitalize text-white fs-15'>{ingredient}</span>
+                        <span className='ingredient text-capitalize fs-15 border'>{ingredient}</span>
                       </li>
                     ))
                   }
